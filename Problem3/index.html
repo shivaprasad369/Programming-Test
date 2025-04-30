@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Number Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1a73e8;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1557b0;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Display List Of Odd Numbers</h2>
+        <form onsubmit="handleGetValues(event)">
+            <label for="start">Start Number:</label>
+            <input type="number" id="start" name="start" required>
+            <button type="submit" name="submit">Generate Numbers</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function handleGetValues(event){
+            event.preventDefault();
+            var start = parseInt(document.getElementById("start").value);
+            var result = document.getElementById("result");
+            var oddNumbers = [];
+            var count=1;
+            
+            if (start <= 0) {
+                result.innerHTML = "Please enter a positive number";
+                return;
+            }
+
+
+            if(start % 2 !==0){
+
+                for (var i = 1; i <= start; i++) {
+                if (count % 2 !== 0) {
+                    oddNumbers.push(count);
+                }
+                else{
+                    count++;
+                oddNumbers.push(count);
+            }
+            count++;
+            }
+                result.innerHTML = "Odd Numbers: " + oddNumbers.join(", ");
+            }
+
+
+            else{
+                for (var i = 1; i <= start-1; i++) {
+                if (count % 2 !== 0) {
+                    oddNumbers.push(count);
+                }
+                else{
+                    count++;
+                oddNumbers.push(count);
+            }
+            count++;
+            }
+                result.innerHTML = "Odd Numbers: " + oddNumbers.join(", ");
+            }
+        }
+    </script>
+</body>
+</html>

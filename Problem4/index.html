@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array to JSON with Keys</title>
+</head>
+<body>
+  <h1>Array to JSON with Keys</h1>
+  <div id="jsonOutput"></div>
+  <script>
+    const fruits = [1,2,8,9,12,46,76,82,15,20,30];
+    const obj = fruits.reduce((acc, item, index) => {
+      acc[index + 1] = item;
+      return acc;
+    }, {});
+    const json = JSON.stringify(obj);
+    document.getElementById("jsonOutput").innerText = json;
+  </script>
+</body>
+</html>
